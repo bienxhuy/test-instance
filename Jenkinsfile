@@ -10,20 +10,20 @@ pipeline {
 
         stage('Deploy Environment') {
             steps {
-                sh 'docker compose up -d'
-                sh 'sleep 10' // wait for services to boot
+                bat 'docker compose up -d'
+                bat 'sleep 10' // wait for services to boot
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'echo Running tests...'
+                bat 'echo Running tests...'
             }
         }
 
         stage('Teardown') {
             steps {
-                sh 'docker compose down'
+                bat 'docker compose down'
             }
         }
     }
