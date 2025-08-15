@@ -74,7 +74,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 dir("${TEST_FRAMEWORK_DIR}") {
-                    bat 'python -m pytest -q'
+                    bat '"C:\\Users\\Bien Xuan Huy\\AppData\\Local\\Programs\\Python\\Python312\\python.exe" -m pytest -q'
                 }
             }
         }
