@@ -11,8 +11,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 bat 'echo Running tests...'
-                bat 'npm -v'
-                bat 'sleep 30'
+                bat 'npm install'
+                bat 'npm run dev'
             }
         }
     }
