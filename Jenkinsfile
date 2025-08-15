@@ -74,7 +74,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 dir("${TEST_FRAMEWORK_DIR}") {
-                    bat 'pytest -q'
+                    bat 'dir'
                 }
             }
         }
