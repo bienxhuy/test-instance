@@ -8,12 +8,12 @@ pipeline {
             }
         }
 
-        stage('Deploy Environment') {
-            steps {
-                bat 'docker compose up -d'
-                bat 'sleep 10' // wait for services to boot
-            }
-        }
+        // stage('Deploy Environment') {
+        //     steps {
+        //         bat 'docker compose up -d'
+        //         bat 'sleep 10' // wait for services to boot
+        //     }
+        // }
 
         stage('Run Tests') {
             steps {
@@ -21,10 +21,10 @@ pipeline {
             }
         }
 
-        stage('Teardown') {
-            steps {
-                bat 'docker compose down'
-            }
-        }
+        // stage('Teardown') {
+        //     steps {
+        //         bat 'docker compose down'
+        //     }
+        // }
     }
 }
