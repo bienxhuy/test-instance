@@ -7,19 +7,20 @@ pipeline {
         TEST_FRAMEWORK_DIR = 'test-framework'
     }
 
-    stage('Setup Env Files') {
-        steps {
-            dir("${TEST_FRAMEWORK_DIR}") {
-                writeFile file: '.env', text: """
+    stages {
+        stage('Setup Env Files') {
+            steps {
+                dir("${TEST_FRAMEWORK_DIR}") {
+                    writeFile file: '.env', text: """
                     BASE_URL=${BASE_URL}
                     LOG_DIR=${LOG_DIR}
                     SCREENSHOT_DIR=${SCREENSHOT_DIR}
                     LOG_COLLECTOR_HOST=${LOG_COLLECTOR_HOST}
                     LOG_COLLECTOR_PORT=${LOG_COLLECTOR_PORT}
                     """
-            }
-            dir("${LOG_COLLECTOR_DIR}") {
-                writeFile file: '.env', text: """
+                }
+                dir("${LOG_COLLECTOR_DIR}") {
+                    writeFile file: '.env', text: """
                     INFLUX_HOST=${INFLUX_HOST}
                     INFLUX_TOKEN=${INFLUX_TOKEN}
                     INFLUX_DATABASE=${INFLUX_DATABASE}
@@ -27,11 +28,10 @@ pipeline {
                     LOG_COLLECTOR_HOST=${LOG_COLLECTOR_HOST}
                     LOG_COLLECTOR_PORT=${LOG_COLLECTOR_PORT}
                     """
+                }
             }
         }
-    }
 
-    stages {
         stage('Checkout Test Instance') {
             steps {
                 git branch: 'master', url: 'https://github.com/bienxhuy/test-instance.git'
@@ -83,11 +83,8 @@ pipeline {
     post {
         always {
             echo 'Stopping services and cleaning up...'
-            // Kill Python log collector
             bat 'taskkill /F /IM python.exe || exit 0'
-            // Kill Node.js product
             bat 'taskkill /F /IM node.exe || exit 0'
-            // Optional: clean workspace
             cleanWs()
         }
     }
