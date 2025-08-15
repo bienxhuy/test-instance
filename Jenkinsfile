@@ -63,10 +63,10 @@ pipeline {
             }
         }
 
-        stage('Start Log Collector') {
+       stage('Start Log Collector') {
             steps {
                 dir("${LOG_COLLECTOR_DIR}") {
-                    bat 'start /B pythonw log-collector.py'
+                    bat 'start "" /B pythonw log-collector.py'
                 }
             }
         }
