@@ -41,7 +41,7 @@ pipeline {
         stage('Checkout Log Collector') {
             steps {
                 dir("${LOG_COLLECTOR_DIR}") {
-                    git branch: 'master', url: 'https://github.com/bienxhuy/log-collector.git'
+                    git branch: 'master', url: 'https://github.com/bienxhuy/log-collector.git', credentialsId: 'log-collector-cred'
                 }
             }
         }
