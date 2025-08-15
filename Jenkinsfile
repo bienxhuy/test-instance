@@ -63,13 +63,13 @@ pipeline {
             }
         }
 
-        stage('Start Log Collector') {
-            steps {
-                dir("${LOG_COLLECTOR_DIR}") {
-                    bat 'run_log_collector.bat'
-                }
-            }
-        }
+        // stage('Start Log Collector') {
+        //     steps {
+        //         dir("${LOG_COLLECTOR_DIR}") {
+        //             bat 'run_log_collector.bat'
+        //         }
+        //     }
+        // }
 
         stage('Run Tests') {
             steps {
