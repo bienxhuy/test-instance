@@ -8,25 +8,12 @@ pipeline {
             }
         }
 
-        // stage('Deploy Environment') {
-        //     steps {
-        //         bat 'docker compose up -d'
-        //         bat 'sleep 10' // wait for services to boot
-        //     }
-        // }
-
         stage('Run Tests') {
             steps {
                 bat 'echo Running tests...'
-                bat 'npm run dev'
+                bat 'npm -v'
                 bat 'sleep 30'
             }
         }
-
-        // stage('Teardown') {
-        //     steps {
-        //         bat 'docker compose down'
-        //     }
-        // }
     }
 }
