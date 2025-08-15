@@ -66,7 +66,7 @@ pipeline {
         stage('Start Log Collector') {
             steps {
                 dir("${LOG_COLLECTOR_DIR}") {
-                    bat 'start /B python log-collector.py > log_collector.log 2>&1'
+                    bat 'start /B pythonw log-collector.py'
                 }
             }
         }
